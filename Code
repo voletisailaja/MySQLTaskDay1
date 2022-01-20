@@ -1,0 +1,92 @@
+-- create a table
+CREATE TABLE users (
+  id,
+  name,
+  gender,
+  email_id,
+  phone_no
+);
+-- insert some values
+INSERT INTO users VALUES (1, 'Sreyansh','M', 'sre@gmail.com',231);
+INSERT INTO users VALUES (2, 'Samvedhya','F','sam@gmail.com',456);
+INSERT INTO users VALUES (3, 'Harshitha', 'F','har@gmail.com',987);
+INSERT INTO users VALUES (4, 'Saurya','M', 'sau@gmail.com',564);
+INSERT INTO users VALUES (5, 'Devansh', 'M','dev@gmail.com',860);
+
+-- fetch some values
+SELECT * FROM users;
+
+create table codekata(id,total_no_of_problems,no_of_problems_solved,no_of_correct_submissions,no_of_coins_earned);
+insert into codekata values(1,50,20,20,100);
+insert into codekata values(2,50,15,15,75);
+insert into codekata values(3,50,30,20,100);
+insert into codekata values(4,50,40,35,175);
+insert into codekata values(5,50,30,25,125);
+select * from codekata;
+create table attendance(total_no_of_students,no_of_presentees,no_of_absentees,attendance_status);
+insert into attendance values(5,3,2,'A');
+insert into attendance values(5,3,2,'P');
+insert into attendance values(5,3,2,'P');
+insert into attendance values(5,3,2,'P');
+insert into attendance values(5,3,2,'A');
+select * from attendance;
+
+create table topics(name_of_the_topic,difficulty_level,language_selected);
+insert into topics values('arrays','Easy','Javascript');
+insert into topics values('linkedlists','Difficult','Java');
+insert into topics values('stacks','Medium','Python');
+insert into topics values('queues','Medium','Ruby');
+insert into topics values('strings','Easy','Go');
+select * from topics;
+
+create table tasks(name_of_the_task,attempts_take_to_run_code,output_status);
+insert into tasks values('sumoftwoarrays',3,'correct');
+insert into tasks values('deletingnodeattheend',4,'correct');
+insert into tasks values('stackexecution',5,'correct');
+insert into tasks values('queueexecution',5,'correct');
+insert into tasks values('stringtouppercase',2,'correct');
+select * from tasks;
+
+create table company_drives(id,name_of_the_company,no_of_campus_drives_attended);
+insert into company_drives values(1,'Amazon',1);
+insert into company_drives values(2,'Apple',1);
+insert into company_drives values(3,'Facebook',1);
+insert into company_drives values(4,'Flipkart',1);
+insert into company_drives values(5,'Microsoft',1);
+select * from company_drives;
+create table mentors(name_of_the_mentor,no_of_students_assigned);
+insert into mentors values('Abhijith',1);
+insert into mentors values('Akshith',1);
+insert into mentors values('Rishi',1);
+insert into mentors values('Raju',1);
+insert into mentors values('Vaibhav',1);
+select * from mentors;
+
+create table students_activated_courses(course_name);
+insert into students_activated_courses values('Web_development');
+insert into students_activated_courses values('Web_development');
+insert into students_activated_courses values('Web_development');
+insert into students_activated_courses values('Cloud_computing');
+insert into students_activated_courses values('Cloud_computing');
+select * from students_activated_courses;
+
+create table courses(name_of_the_course);
+insert into courses values('Web_development');
+insert into courses values('Artificial_Intelligence');
+insert into courses values('Cloud_computing');
+insert into courses values('Machine_learning');
+insert into courses values('Mobile_application_development');
+select * from courses;
+-- get no of problems solved in codekata by combining the users
+SELECT  users.id,users.name,users.gender,users.email_id,users.phone_no,codekata.id,codekata.total_no_of_problems,codekata.no_of_problems_solved,codekata.no_of_correct_submissions,codekata.no_of_coins_earned
+FROM users,codekata where users.id=codekata.id;
+
+-- listing  the no of company drives attended by the user
+select users.id,users.name,users.gender,users.email_id,users.phone_no,company_drives.name_of_the_company,company_drives.no_of_campus_drives_attended
+from users,company_drives where users.id=company_drives.id;
+
+-- combining and displaying students_activated_courses and courses for a specific user grouping them based on the course
+select students_activated_courses.course_name,courses.name_of_the_course from students_activated_courses,courses where name_of_the_course = 'Web_development';
+
+-- listing the number of mentors
+select * from mentors;
